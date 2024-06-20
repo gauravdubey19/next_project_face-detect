@@ -142,6 +142,7 @@ const FaceRecognize: React.FC = () => {
         ...prevStatus,
         modelsLoad: false,
         detecting: true,
+        faceDetected: false,
       }));
 
       await startVideo();
