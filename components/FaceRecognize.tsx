@@ -16,7 +16,7 @@ const FaceRecognize: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [options, setOptions] = useState<string>("Add Name!");
   const [matchFace, setMatchFace] = useState<string>(
-    "https://media.discordapp.net/attachments/909838978503544842/1252571964116176947/IMG20240618160242.jpg?ex=6674058b&is=6672b40b&hm=6449e33189e673481f97fa084d20ade152cf5caf4d96c7be2a3aa1d7eb6df92f&"
+    "/assets/defaultFaceToMatch.png"
   );
   const [faceApiStatus, setFaceApiStatus] = useState<FaceApiStatus>({
     modelsLoad: true,
@@ -73,7 +73,7 @@ const FaceRecognize: React.FC = () => {
     // faceapi.matchDimensions(canvasFeed, vidFeed);
 
     const interval = setInterval(async () => {
-      console.log(matchFace); // face that should be match
+      // console.log(matchFace); // face that should be match
 
       const detections = await faceapi
         .detectAllFaces(vidFeed, new faceapi.SsdMobilenetv1Options())
@@ -162,11 +162,11 @@ const FaceRecognize: React.FC = () => {
   }, [matchFace]);
 
   return (
-    <section className="relative w-full h-screen flex flex-col lg:flex-row gap-1 p-4 ease-in-out duration-300 overflow-hidden">
+    <section className="relative w-full h-[92vh] flex flex-col lg:flex-row gap-1 p-4 ease-in-out duration-300 overflow-hidden">
       <div
         className={`relative w-full h-1/2 lg:w-[60%] lg:h-full rounded-2xl flex flex-col items-center justify-center overflow-hidden  ${
           videoRef.current === null &&
-          "bg-[url('/loadTwo.gif')] bg-cover bg-no-repeat"
+          "bg-[url('/assets/loadTwo.gif')] bg-cover bg-no-repeat"
         }`}
       >
         <video
@@ -174,7 +174,7 @@ const FaceRecognize: React.FC = () => {
           width="720"
           height="660"
           autoPlay
-          className="lg:scale-110 rounded-xl shadow-[0_0_50px_rgba(30,30,30,0.78)]"
+          className="lg:scale-105 rounded-xl shadow-[0_0_50px_rgba(30,30,30,0.78)]"
         />
         <canvas
           ref={canvasRef}
@@ -195,14 +195,14 @@ const FaceRecognize: React.FC = () => {
       </div>
       <>
         {faceApiStatus.modelsLoad && (
-          <div className="absolute z-10 w-full h-full flex items-center justify-center backdrop-blur-md">
+          <div className="absolute z-10 left-0 right-0 bottom-0 w-full h-full flex items-center justify-center backdrop-blur-md">
             <span className="text-3xl font-semibold">Modules Loading...</span>
           </div>
         )}
         {faceApiStatus.detecting && (
-          <div className="absolute z-10 w-full h-full flex flex-col items-center justify-center backdrop-blur-md">
+          <div className="absolute z-10 left-0 right-0 bottom-0 w-full h-full flex flex-col items-center justify-center backdrop-blur-md">
             <Image
-              src="/faceLoadingPng.gif"
+              src="/assets/faceLoadingPng.gif"
               alt="detecting face..."
               loading="lazy"
               width={400}

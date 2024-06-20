@@ -7,7 +7,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "GoFaceDetect",
   description: "Face detection/recognization using face-api.js ",
-  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({
