@@ -103,9 +103,9 @@ const FaceRecognize: React.FC = () => {
         resizedDetections.forEach((face) => {
           const { age, gender, genderProbability, detection, descriptor } =
             face;
-          const genderText = `${gender} (${Math.round(
-            genderProbability * 100
-          )}%)`;
+          const genderText = `${gender} (${
+            (Math.round(genderProbability * 100) / 100) * 100
+          }%)`;
           const ageText = `${Math.round(age)} years`;
 
           new faceapi.draw.DrawTextField(
